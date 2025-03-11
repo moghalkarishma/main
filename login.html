@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swapping Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffecd2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center; /* Center the navbar content horizontally */
+            align-items: center;     /* Center vertically */
+            padding: 10px 30px;
+            background: linear-gradient(45deg, #137a9a, #009688);
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            justify-content: center; /* Center the navigation items */
+        }
+
+        .navbar-nav .nav-item {
+            margin: 0 15px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1.2em;
+            color: white !important;
+            padding: 10px 20px;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa !important;
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            border-radius: 5px;
+        }
+
+        .container {
+            width: 100%;
+            height: calc(100vh - 60px); /* Adjust height to accommodate navbar */
+            display: flex;
+            position: relative;
+        }
+
+        .side {
+            flex: 1;
+            transition: all 0.8s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-side {
+            background: url('https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .image-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(161, 140, 209, 0.8) 0%, rgba(251, 194, 235, 0.8) 100%);
+        }
+
+        .form-side {
+            background: linear-gradient(45deg, #fff1eb, #ace0f9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            transform: translateX(0);
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .form-container h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #a18cd1;
+            box-shadow: 0 0 0 3px rgba(161, 140, 209, 0.3);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #9370DB, #FF69B4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .swap-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .swap-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .swap-button i {
+            font-size: 1.5rem;
+            color: #a18cd1;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .side {
+                height: 50vh;
+            }
+            .swap-button {
+                top: 50%;
+            }
+        }
+
+        /* Add these gradient animations */
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Modified body background */
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Decorative elements */
+        .decorative-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-1 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .circle-3 {
+            width: 70px;
+            height: 70px;
+            bottom:  10%;
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        /* Enhanced content styles */
+        .content {
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Glowing effect for emoji */
+        .emoji {
+            font-size: 4rem;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 30px rgba(255, 255, 255, 0.6),
+                0 0 40px rgba(255, 255, 255, 0.4);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(255, 255, 255, 0.6),
+                    0 0 40px rgba(255, 255, 255, 0.4);
+            }
+            to {
+                text-shadow: 
+                    0 0 30px rgba(255, 255, 255, 0.9),
+                    0 0 40px rgba(255, 255, 255, 0.7),
+                    0 0 50px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* Enhanced swap button */
+        .swap-button {
+            background: linear-gradient(-45deg, #ff3e9d, #0098f7);
+            color: white;
+            width: 70px;
+            height: 70px;
+            box-shadow: 
+                0 8px 16px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(255, 62, 157, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .swap-button:hover {
+            transform: translate(-50%, -50%) scale(1.1) rotate(180deg);
+            box-shadow: 
+                0 12px 24px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 62, 157, 0.6);
+        }
+
+        .swap-button i {
+            color: white;
+            font-size: 1.8rem;
+        }
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <!-- <nav class="navbar">
+        <div class="navbar-nav">
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link" href="/classify">Classification</a>
+        </div>
+    </nav> -->
+
+    <div class="container">
+        <div class="side image-side" id="imageSide">
+            <div class="content">
+                <div class="emoji">🌄</div>
+                <h1>Welcome Back</h1>
+                <p>To keep connected with us please login with your personal info</p>
+            </div>
+        </div>
+        <div class="side form-side" id="formSide">
+            <div class="form-container">
+                <h2>Login <i class="fas fa-sign-in-alt"></i></h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit">Sign In</button>
+                    <p style="text-align: center; margin-top: 1rem;">
+                        Don't have an account? <a href="#" style="color: #a18cd1;">Sign up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <button class="swap-button" id="swapButton"><i class="fas fa-exchange -alt"></i></button>
+        <div class="decorative-circle circle-1"></div>
+        <div class="decorative-circle circle-2"></div>
+        <div class="decorative-circle circle-3"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const imageSide = document.getElementById('imageSide');
+            const formSide = document.getElementById('formSide');
+            const swapButton = document.getElementById('swapButton');
+            let isImageOnLeft = true;
+
+            // Swap functionality
+            swapButton.addEventListener('click', () => {
+                if (isImageOnLeft) {
+                    imageSide.style.transform = 'translateX(100%)';
+                    formSide.style.transform = 'translateX(-100%)';
+                } else {
+                    imageSide.style.transform = 'translateX(0)';
+                    formSide.style.transform = 'translateX(0)';
+                }
+                isImageOnLeft = !isImageOnLeft;
+            });
+
+            // Simple form validation
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                if (email && password) {
+                    alert('Login successful!'); // Replace with actual login logic
+                } else {
+                    alert('Please fill in all fields');
+                }
+            });
+        });
+    </script>
+     {% endblock %}
+</body>
+</html>

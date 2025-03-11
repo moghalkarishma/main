@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGJhY2tncm91bmR8ZW58MHx8fHwxNjg0MjY1NjY0&ixlib=rb-4.0.3&q=80&w=1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.8); /* Dark background with more opacity */
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .emoji {
+            font-size: 2rem; /* Larger size for emojis */
+        }
+
+        .mission {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #ffeb3b; /* Bright yellow for emphasis */
+        }
+
+        .values {
+            margin: 30px 0;
+            font-size: 1.2rem;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .value-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #ffeb3b; /* Decorative left border */
+            transition: transform 0.3s;
+        }
+
+        .value-item:hover {
+            transform: scale(1.02); /* Scale effect on hover */
+            background: rgba(255, 255, 255, 0.1); /* Light background on hover */
+        }
+
+        .team {
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+
+        .team-member {
+            margin: 10px 0;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+
+        .cta {
+            margin-top: 40px;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .cta:hover {
+            background-color: #3e8e41; /* Darker green on hover */
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+
+            .cta {
+                font-size: 1.2rem;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <div class="container">
+        <h1>About Us 🌱</h1>
+        <p>We are dedicated to helping farmers identify pests and protect crops through AI-powered classification. 🤖 🌾</p>
+        <p class="mission">Our mission is to empower farmers with technology to ensure sustainable agriculture and food security. 🌍✨</p>
+        
+        <h2>Our Values 🌟</h2>
+        <div class="values">
+            <div class="value-item">🌱 **Sustainability**: We prioritize eco-friendly practices to protect our planet.</div>
+            <div class="value-item">🤝 **Collaboration**: We believe in working together with farmers and experts to achieve the best results.</div>
+            <div class="value-item">🔍 **Innovation**: We leverage cutting-edge technology to provide effective solutions.</div>
+            <div class="value-item">📚 **Education**: We are committed to educating farmers about pest management and sustainable practices.</div>
+        </div>
+
+        <div class="team">
+            <h2>Meet Our Team 👩‍🌾👨‍🌾</h2>
+            <div class="team-member">👨‍🔬 Lakshmanarao - AI Specialist</div>
+            <div class="team-member">👩‍🔬 AKILA - AI Specialist</div>
+            <div class="team-member">👩‍🔬 Chanti - AI Specialist</div>
+            <div class="team-member">👩‍🎓 M. Yamini - GMRIT Student</div>
+            <div class="team-member">👩‍🌾 Shalini - GMRIT Student</div>
+            <div class="team-member">👩‍💻 Deepthi - GMRIT Student</div>
+            <div class="team-member">👨‍🎓 Ramarrao - GMRIT Student</div>
+            <div class="team-member">👩‍🌾 Karishma - GMRIT Student</div>
+        </div>
+
+        <div class="cta">Join us in revolutionizing agriculture! 🌾✨</div>
+    </div>
+    {% endblock %}
+</body>
+</html>
