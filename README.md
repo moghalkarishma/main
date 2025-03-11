@@ -1,1 +1,2 @@
 [![Download Dataset](https://img.shields.io/badge/Download-Dataset-blue.svg)](https://github.com/Yammu02/Dangerous-Farm-Insects-Detection-System/releases/tag/Dataset)
+ Advancing Farm Insect Classification Using Fine-Tuning and Transfer Learning Models, specifically using MobileNet and VGG16 in a hybrid model. Do you need help with dataset preprocessing, transfer learning, model fine-tuning, hyperparameter tuning, or evaluation? Let me know what you're currently working on! 
